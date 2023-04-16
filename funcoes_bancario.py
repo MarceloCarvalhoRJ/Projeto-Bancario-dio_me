@@ -234,9 +234,16 @@ def cadastro_usuario(cadastro_usuarios):
         if is_numeric(data_nascimento, tamanho=6):  
             break 
     
-    endereco = input(colored("Informe o endereço (logradouro, nro - bairro - cidade/sigla estado): ", 'light_cyan')).strip()
-    if volta_menu(endereco):
-        return 
+    while True:
+        endereco = input(colored("Informe o endereço (logradouro, nro - bairro - cidade/sigla estado): ", 'light_cyan')).strip()
+        #retorna ao menu se o usuario digitar 0.
+        if volta_menu(endereco):
+            return
+        #valida se o usuario separou por '-': logadouro - bairro - cidade/sigla.
+        if endereco.count('-') != 2:
+            print('Logadouro, Bairro e Cidade/sigla devem estar separados por "-"')
+        else:
+            break 
     #cria um dicionário dentro da lista cadastro_usurios com as informacões de cada usuário. format_data() -> formata data inserida pelo usuário em dd/mm/aa.
     cadastro_usuarios.append({'cpf': cpf, 'nome': nome, 'data_nascimento': format_data(data_nascimento), 'endereço': endereco}) 
 
