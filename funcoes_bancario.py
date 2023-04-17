@@ -50,7 +50,7 @@ def deposito(saldo, relacao_depositos):
                 # Atualiza a string 'relacao_depositos' com o valor do novo depósito
                 relacao_depositos += f"{moeda(vlr_deposito)}\n"
                 print(colored('💰 Depósito realizado com sucesso! 💰', 'light_yellow'))
-                sleep(.5) #funcao moeda, formata por padrao o numero em moeda BRL.
+                sleep(1) #funcao moeda, formata por padrao o numero em moeda BRL.
                 break
             else:
                 # Informa ao usuário que o valor é inválido e pede que insira novamente
