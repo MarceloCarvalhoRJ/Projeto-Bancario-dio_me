@@ -220,7 +220,19 @@ def cadastro_usuario(cadastro_usuarios):
             sleep(1)
             return
         
-    nome = input(colored('Informe o nome completo: ', 'light_cyan')).strip()
+    while True:    
+        nome = input(colored('Informe o nome completo: ', 'light_cyan')).strip()
+        #funcao para retornar ao menu principal caso o usuário desista do cadastro, basta digitar '0' e apertar enter.
+        if volta_menu(nome): 
+            return
+        #retorna para o input caso a variavel nome esteja vazia.
+        if len(nome) == 0:
+            print('Por favor, preencha o campo nome')
+        #retorna para o input caso a variavel nome não tenha letras.
+        elif nome.isnumeric():
+            print('Parece que você não digitou letras no nome. Por favor, tente novamente')
+        else:
+            break
     #funcao para retornar ao menu principal caso o usuário desista do cadastro, basta digitar '0' e apertar enter.
     if volta_menu(nome): 
         return 
